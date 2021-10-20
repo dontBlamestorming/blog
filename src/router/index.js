@@ -6,16 +6,16 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "DefaultLayout",
     component: () =>
       import(
         /* webpackChunkName: "layouts-default-index" */ "@/layouts/default/Index"
       ),
     children: [
       {
-        path: "/", // cant use same name for root
-        name: "View",
-        component: () => import(/* webpackChunkName: "home" */ "../views/View"),
+        path: "/",
+        name: "PostListView",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "../views/PostListView"),
       },
     ],
   },
