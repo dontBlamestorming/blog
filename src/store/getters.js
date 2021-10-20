@@ -1,1 +1,5 @@
-export default {};
+export default {
+  getPostList(state) {
+    return state.postList;
+  },
+};

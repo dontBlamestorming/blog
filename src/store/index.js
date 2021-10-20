@@ -9,6 +9,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    post: {},
+    postList: [],
+    /*
+      id: Int,
+      title: String,
+      sub_title: String,
+      content: String - md,
+      thumbnail_url: String - url,
+      post_data: String - yyyy.mm.dd,
+    */
     loading: false,
   },
   mutations,
