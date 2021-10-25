@@ -1,16 +1,12 @@
 <template>
-  <v-app>
-    <DefaultAppbar></DefaultAppbar>
+  <v-app class="app">
+    <DefaultAppbar />
 
-    <DefaultBanner></DefaultBanner>
+    <DefaultBanner />
 
-    <v-main>
-      <v-container>
-        <DefaultView></DefaultView>
-      </v-container>
-    </v-main>
+    <DefaultView />
 
-    <DefaultFooter></DefaultFooter>
+    <DefaultFooter />
   </v-app>
 </template>
 
@@ -31,4 +27,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.app {
+  /*background-color: black !important;*/
+}
+</style>
