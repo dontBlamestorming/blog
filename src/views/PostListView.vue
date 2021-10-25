@@ -1,17 +1,34 @@
 <template>
-  <v-row>
-    <v-col
-      v-for="(post, index) in postList"
-      :key="index"
-      cols="auto"
-      sm="6"
-      md="6"
-      lg="4"
-      xl="3"
-    >
-      <post-card :post="post"></post-card>
-    </v-col>
-  </v-row>
+  <div>
+    <v-row>
+      <v-col class="d-flex justify-center">
+        <v-chip-group mandatory active-class="primary--text">
+          <v-chip
+            v-for="(category, index) in categoryList"
+            :key="category"
+            @click="onClickCategory(index)"
+          >
+            {{ category }}
+          </v-chip>
+        </v-chip-group>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col
+        v-for="(post, index) in postList"
+        :key="index"
+        cols="auto"
+        sm="6"
+        md="6"
+        lg="4"
+        xl="3"
+      >
+        <div @click="onClickPostCard(post.id, post.category)">
+          <post-card :post="post"></post-card>
+        </div>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -23,13 +40,33 @@ export default {
   components: {
     PostCard,
   },
+  methods: {
+    onClickCategory(id) {
+      this.$store.dispatch("changeCurrentCategoryId", id);
+    },
+    onClickPostCard(id, category) {
+      this.$store.dispatch("setPostId", id);
+      this.$router.push({
+        path: `${category}/post/${id}`,
+        params: { post_id: id, category: category },
+      });
+    },
+  },
   computed: {
     ...mapGetters({
-      postList: "getPostList",
+      postList: "getCurrentPostList",
+      /*
+        id: Int,
+        title: String,
+        sub_title: String,
+        category: String,
+        thumbnail_url: String - url,
+      */
+      categoryList: "getCategoryList",
+      /*
+        category_list: Array
+      */
     }),
-  },
-  created() {
-    this.$store.dispatch("fetchPostList");
   },
 };
 </script>
