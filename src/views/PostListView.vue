@@ -2,10 +2,11 @@
   <div>
     <v-row>
       <v-col class="d-flex justify-center">
-        <v-chip-group mandatory active-class="primary--text">
+        <v-chip-group :value="currentCategoryId" active-class="primary--text">
           <v-chip
             v-for="(category, index) in categoryList"
             :key="category"
+            :value="index"
             @click="onClickCategory(index)"
           >
             {{ category }}
@@ -66,6 +67,7 @@ export default {
       /*
         category_list: Array
       */
+      currentCategoryId: "getCurrentCategoryId",
     }),
   },
 };

@@ -44,4 +44,7 @@ export default {
 
     return post;
   },
+  getCurrentCategoryId(state) {
+    return state.current_category_id;
+  },
 };
