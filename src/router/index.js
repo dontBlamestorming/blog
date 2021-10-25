@@ -8,14 +8,22 @@ const routes = [
     path: "/",
     component: () =>
       import(
-        /* webpackChunkName: "layouts-default-index" */ "@/layouts/default/Index"
+        /* webpackChunkName: "layouts-default-index" */ "../layouts/default/Index"
       ),
     children: [
       {
         path: "/",
         name: "PostListView",
         component: () =>
-          import(/* webpackChunkName: "home" */ "../views/PostListView"),
+          import(
+            /* webpackChunkName: "post-list-view" */ "../views/PostListView"
+          ),
+      },
+      {
+        path: ":category/post/:post_id",
+        name: "PostView",
+        component: () =>
+          import(/* webpackChunkName: "post-view" */ "../views/PostView"),
       },
     ],
   },

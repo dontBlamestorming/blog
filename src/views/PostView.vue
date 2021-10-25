@@ -8,7 +8,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "Post",
+  name: "PostView",
   data() {
     return {
       content: "",
