@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    <v-img :src="post.thumbnail_url"></v-img>
+  <v-card class="card">
+    <v-img width="500" height="200" :src="post.thumbnail_url"></v-img>
     <v-card-title>{{ post.title }}</v-card-title>
     <v-card-subtitle>{{ post.sub_title }}</v-card-subtitle>
   </v-card>
@@ -26,4 +26,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.card:hover {
+  cursor: pointer;
+}
+</style>
