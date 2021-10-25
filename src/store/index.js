@@ -9,16 +9,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    post: {},
-    postList: [],
-    /*
-      id: Int,
-      title: String,
-      sub_title: String,
-      content: String - md,
-      thumbnail_url: String - url,
-      post_data: String - yyyy.mm.dd,
-    */
+    categorized_post_list: [],
+    category_list: ["all"],
+    current_category_id: 0,
+    active_post_id: null,
+    active_post: null,
     loading: false,
   },
   mutations,
