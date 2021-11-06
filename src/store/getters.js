@@ -1,7 +1,7 @@
 import marked from "marked";
 
 export default {
-  getPostList(state) {
+  getPostList: (state) => {
     let result = [];
 
     if (state.current_category_id) {
@@ -17,19 +17,19 @@ export default {
     return result;
   },
 
-  getCategoryList(state) {
-    let categoryList = state.category_list;
+  getCategoryList: (state) => {
+    let result = state.category_list;
 
     state.categorized_post_list.forEach((category) => {
-      if (!categoryList.includes(category.name)) {
-        categoryList.push(category.name);
+      if (!result.includes(category.name)) {
+        result.push(category.name);
       }
     });
 
-    return categoryList;
+    return result;
   },
 
-  getPost(state) {
+  getPost: (state) => {
     const post = {};
 
     if (state.active_post) {
@@ -41,7 +41,7 @@ export default {
     return post;
   },
 
-  getCurrentCategoryId(state) {
+  getCurrentCategoryId: (state) => {
     return state.current_category_id;
   },
 };
