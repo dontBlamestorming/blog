@@ -2,16 +2,7 @@
   <div>
     <v-row>
       <v-col class="d-flex justify-center">
-        <v-chip-group :value="currentCategoryId" active-class="primary--text">
-          <v-chip
-            v-for="(category, index) in categoryList"
-            :key="category"
-            :value="index"
-            @click="onClickCategory(index)"
-          >
-            {{ category }}
-          </v-chip>
-        </v-chip-group>
+        <category></category>
       </v-col>
     </v-row>
     <v-row>
@@ -35,16 +26,17 @@
 <script>
 import { mapGetters } from "vuex";
 import PostCard from "../components/PostCard";
+import Category from "../components/Category";
 
 export default {
   name: "PostListView",
+
   components: {
+    Category,
     PostCard,
   },
+
   methods: {
-    onClickCategory(id) {
-      this.$store.dispatch("changeCurrentCategoryId", id);
-    },
     onClickPostCard(id, category) {
       this.$store.dispatch("setPostId", id);
       this.$router.push({
@@ -53,6 +45,7 @@ export default {
       });
     },
   },
+
   computed: {
     ...mapGetters({
       postList: "getCurrentPostList",
@@ -63,11 +56,6 @@ export default {
         category: String,
         thumbnail_url: String - url,
       */
-      categoryList: "getCategoryList",
-      /*
-        category_list: Array
-      */
-      currentCategoryId: "getCurrentCategoryId",
     }),
   },
 };
