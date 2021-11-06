@@ -1,27 +1,22 @@
 import marked from "marked";
 
 export default {
-  getCurrentPostList(state) {
-    let currentPostList = [];
-    let categorizedPostList = state.categorized_post_list;
-    const currentCategoryId = state.current_category_id;
+  getPostList(state) {
+    let result = [];
 
-    categorizedPostList.map((category) => {
-      if (!currentCategoryId) {
-        category.posts.map((post) => {
-          currentPostList.push(post);
+    if (state.current_category_id) {
+      result = state.categorized_post_list[state.current_category_id - 1].posts;
+    } else {
+      state.categorized_post_list.forEach((category) => {
+        category.posts.forEach((post) => {
+          result.push(post);
         });
-      } else {
-        if (category.id === currentCategoryId) {
-          category.posts.map((post) => {
-            currentPostList.push(post);
-          });
-        }
-      }
-    });
+      });
+    }
 
-    return currentPostList;
+    return result;
   },
+
   getCategoryList(state) {
     let categoryList = state.category_list;
 
@@ -33,6 +28,7 @@ export default {
 
     return categoryList;
   },
+
   getPost(state) {
     const post = {};
 
@@ -44,6 +40,7 @@ export default {
 
     return post;
   },
+
   getCurrentCategoryId(state) {
     return state.current_category_id;
   },
