@@ -1,22 +1,6 @@
 import marked from "marked";
 
 export default {
-  getPostList: (state) => {
-    let result = [];
-
-    if (state.current_category_id) {
-      result = state.categorized_post_list[state.current_category_id - 1].posts;
-    } else {
-      state.categorized_post_list.forEach((category) => {
-        category.posts.forEach((post) => {
-          result.push(post);
-        });
-      });
-    }
-
-    return result;
-  },
-
   getPost: (state) => {
     const post = {};
 

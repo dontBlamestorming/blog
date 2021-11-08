@@ -7,7 +7,7 @@
     </v-row>
     <v-row>
       <v-col
-        v-for="(post, index) in postList"
+        v-for="(post, index) in posts"
         :key="index"
         cols="auto"
         sm="6"
@@ -24,7 +24,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+
 import PostCard from "../components/PostCard";
 import Category from "../components/Category";
 
@@ -47,16 +48,22 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-      postList: "getCurrentPostList",
-      /*
-        id: Int,
-        title: String,
-        sub_title: String,
-        category: String,
-        thumbnail_url: String - url,
-      */
-    }),
+    ...mapState(["current_category_id", "categorized_post_list"]),
+
+    posts() {
+      let result = [];
+
+      if (this.current_category_id)
+        return this.categorized_post_list[this.current_category_id - 1].posts;
+
+      this.categorized_post_list.forEach((category) => {
+        category.posts.forEach((post) => {
+          result.push(post);
+        });
+      });
+
+      return result;
+    },
   },
 };
 </script>
