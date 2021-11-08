@@ -17,18 +17,6 @@ export default {
     return result;
   },
 
-  getCategoryList: (state) => {
-    let result = state.category_list;
-
-    state.categorized_post_list.forEach((category) => {
-      if (!result.includes(category.name)) {
-        result.push(category.name);
-      }
-    });
-
-    return result;
-  },
-
   getPost: (state) => {
     const post = {};
 
