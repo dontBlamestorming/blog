@@ -1,7 +1,7 @@
 <template>
   <v-chip-group :value="currentCategoryId" active-class="primary--text">
     <v-chip
-      v-for="(category, index) in categoryList"
+      v-for="(category, index) in categories"
       :key="category"
       :value="index"
       @click="onClickCategory(index)"
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState, mapGetters } from "vuex";
 export default {
   name: "Category",
 
@@ -23,13 +23,21 @@ export default {
   },
 
   computed: {
+    ...mapState(["category_list", "categorized_post_list"]),
+
     ...mapGetters({
-      categoryList: "getCategoryList",
-      /*
-        category_list: Array
-      */
       currentCategoryId: "getCurrentCategoryId",
     }),
+
+    categories() {
+      const result = ["all"];
+
+      this.categorized_post_list.forEach((category) =>
+        result.push(category.name)
+      );
+
+      return result;
+    },
   },
 };
 </script>
