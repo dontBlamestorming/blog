@@ -10,7 +10,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     categorized_post_list: [],
-    category_list: ["all"],
     current_category_id: 0,
     active_post_id: null,
     active_post: null,
