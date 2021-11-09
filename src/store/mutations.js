@@ -5,10 +5,6 @@ export default {
     state.categorized_post_list = data;
   },
 
-  SET_POST_ID(state, id) {
-    state.selected_post_id = id;
-  },
-
   SET_POST(state, { id, post_date, content }) {
     state.current_post = {
       id: id,

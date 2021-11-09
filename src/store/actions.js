@@ -13,6 +13,7 @@ export default {
         console.error(error);
       });
   },
+
   fetchPost({ commit }, postId) {
     axios
       .get(`api/posts/${parseInt(postId)}`)
@@ -23,10 +24,8 @@ export default {
         console.error(error);
       });
   },
-  setPostId({ commit }, id) {
-    commit("SET_POST_ID", id);
-  },
-  changeCurrentCategoryId({ commit }, id) {
-    commit("SET_CATEGORY_ID", id);
+
+  changeCategoryId({ commit }, id) {
+    commit("SET_CURRENT_CATEGORY_ID", id);
   },
 };

@@ -39,7 +39,6 @@ export default {
 
   methods: {
     onClickPostCard(id, category) {
-      this.$store.dispatch("setPostId", id);
       this.$router.push({
         path: `${category}/post/${id}`,
         params: { post_id: id, category: category },
