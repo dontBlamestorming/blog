@@ -17,7 +17,7 @@ export default {
     };
   },
 
-  SET_CATEGORY_ID(state, id) {
+  SET_CURRENT_CATEGORY_ID(state, id) {
     state.current_category_id = id;
   },
 };

@@ -4,7 +4,7 @@
       v-for="(category, index) in categories"
       :key="category"
       :value="index"
-      @click="onClickCategory(index)"
+      @click="changeCategoryId(index)"
     >
       {{ category }}
     </v-chip>
@@ -17,8 +17,8 @@ export default {
   name: "Category",
 
   methods: {
-    onClickCategory(id) {
-      this.$store.dispatch("changeCurrentCategoryId", id);
+    changeCategoryId(id) {
+      this.$store.dispatch("changeCategoryId", id);
     },
   },
 
