@@ -18,6 +18,7 @@ import DefaultView from "./View";
 
 export default {
   name: "DefaultLayout",
+
   components: {
     DefaultAppbar,
     DefaultBanner,

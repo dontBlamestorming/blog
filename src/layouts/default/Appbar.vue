@@ -52,11 +52,13 @@
 <script>
 export default {
   name: "DefaultAppbar",
+
   data() {
     return {
       showDialog: false,
     };
   },
+
   methods: {
     copyToClipboard() {
       this.$copyText(

@@ -9,6 +9,7 @@
 <script>
 export default {
   name: "PostCard",
+
   props: {
     post: {
       /*

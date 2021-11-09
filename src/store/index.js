@@ -11,11 +11,19 @@ export default new Vuex.Store({
   state: {
     categorized_post_list: [],
     current_category_id: 0,
-    active_post_id: null,
-    active_post: null,
+
+    current_post: {
+      id: null,
+      post_date: "",
+      content: "",
+    },
+
     loading: false,
   },
+
   mutations,
+
   actions,
+
   getters,
 });
