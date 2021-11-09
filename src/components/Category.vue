@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "vuex";
 export default {
   name: "Category",
 
@@ -23,16 +23,15 @@ export default {
   },
 
   computed: {
-    ...mapState(["category_list", "categorized_post_list"]),
-
-    ...mapGetters({
-      currentCategoryId: "getCurrentCategoryId",
+    ...mapState({
+      categorizedPostList: "categorized_post_list",
+      currentCategoryId: "current_category_id",
     }),
 
     categories() {
       const result = ["all"];
 
-      this.categorized_post_list.forEach((category) =>
+      this.categorizedPostList.forEach((category) =>
         result.push(category.name)
       );
 
